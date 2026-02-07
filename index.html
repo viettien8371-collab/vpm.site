@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Siêu Nhân Việt - Cuộc Chiến Huyền Thoại</title>
+  <meta name="description" content="Trang chính thức của các siêu nhân Việt Nam - nơi huyền thoại bắt đầu và kết thúc bằng những trận chiến đỉnh cao!"/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0d001a;
+      color: #e0e0ff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Bebas Neue', cursive;
+      letter-spacing: 2px;
+    }
+
+    /* Header & Hero */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 5, 30, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(100, 80, 255, 0.3);
+      transition: all 0.4s;
+    }
+
+    header.scrolled {
+      background: rgba(10, 5, 30, 0.98);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.2rem 3rem;
+    }
+
+    .logo {
+      font-size: 2.4rem;
+      color: #7b5eff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      color: #d0c8ff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -6px;
+      left: 0;
+      background: #7b5eff;
+      transition: width 0.4s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    /* Hero Section */
+    #hero {
+      height: 100vh;
+      min-height: 800px;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+                  url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      padding: 2rem;
+      animation: fadeInUp 1.8s ease-out;
+    }
+
+    .hero-title {
+      font-size: 6.5rem;
+      color: #7b5eff;
+      text-shadow: 0 0 40px rgba(123,94,255,0.7);
+      margin-bottom: 1.5rem;
+      line-height: 1;
+    }
+
+    .hero-subtitle {
+      font-size: 2.2rem;
+      margin-bottom: 2.5rem;
+      color: #c0b8ff;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.8rem;
+      background: #7b5eff;
+      color: white;
+      text-decoration: none;
+      font-size: 1.3rem;
+      border-radius: 50px;
+      transition: all 0.4s;
+      box-shadow: 0 8px 30px rgba(123,94,255,0.4);
+    }
+
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(123,94,255,0.6);
+      background: #6a4aff;
+    }
+
+    /* Sections */
+    section {
+      padding: 8rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 5rem;
+      text-align: center;
+      margin-bottom: 4rem;
+      background: linear-gradient(90deg, #7b5eff, #b65eff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .characters {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 3rem;
+    }
+
+    .card {
+      background: rgba(30, 20, 60, 0.6);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.5s;
+      border: 1px solid rgba(123,94,255,0.3);
+      backdrop-filter: blur(6px);
+    }
+
+    .card:hover {
+      transform: translateY(-15px) scale(1.04);
+      box-shadow: 0 25px 60px rgba(123,94,255,0.35);
+      border-color: #7b5eff;
+    }
+
+    .card img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      transition: transform 0.6s;
+    }
+
+    .card:hover img {
+      transform: scale(1.12);
+    }
+
+    .card-content {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .card h3 {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+      color: #a08fff;
+    }
+
+    /* Fight Section */
+    #fight {
+      background: linear-gradient(135deg, #1a0033, #0d001a);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fight-container {
+      display: flex;
+      justify-content: center;
+      gap: 5rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .fighter {
+      width: 320px;
+      text-align: center;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .fighter.left { animation-delay: 0s; }
+    .fighter.right { animation-delay: 3s; }
+
+    .vs {
+      font-size: 8rem;
+      color: #ff4444;
+      font-weight: bold;
+      align-self: center;
+      text-shadow: 0 0 30px #ff4444aa;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { transform: scale(1); }
+      50%     { transform: scale(1.15); }
+    }
+
+    .speech {
+      background: rgba(0,0,0,0.7);
+      padding: 1.2rem 2rem;
+      border-radius: 20px;
+      margin: 1.5rem 0;
+      font-size: 1.4rem;
+      position: relative;
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .speech.left  { background: #4a2aff44; }
+    .speech.right { background: #ff2a4a44; }
+
+    .speech::after {
+      content: '';
+      position: absolute;
+      width: 0; height: 0;
+      border: 12px solid transparent;
+    }
+
+    .speech.left::after {
+      border-right-color: #4a2aff44;
+      border-left: 0;
+      left: -24px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .speech.right::after {
+      border-left-color: #ff2a4a44;
+      border-right: 0;
+      right: -24px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .fight-btn {
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      background: #0a051e;
+      padding: 4rem 5%;
+      text-align: center;
+      border-top: 1px solid #2a1a5a;
+    }
+
+    .social-links {
+      margin: 2rem 0;
+      font-size: 2rem;
+    }
+
+    .social-links a {
+      color: #a08fff;
+      margin: 0 1.2rem;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #7b5eff;
+      transform: translateY(-5px);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(60px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%     { transform: translateY(-30px); }
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-title { font-size: 5rem; }
+      .hero-subtitle { font-size: 1.8rem; }
+      .fight-container { flex-direction: column; align-items: center; gap: 2rem; }
+      .vs { font-size: 6rem; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title { font-size: 4rem; }
+      h2 { font-size: 4rem; }
+      nav { padding: 1rem 1.5rem; flex-wrap: wrap; }
+      .nav-links { gap: 1.2rem; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="header">
+    <nav>
+      <a href="#" class="logo">SIÊU NHÂN VIỆT</a>
+      <ul class="nav-links">
+        <li><a href="#hero">Trang chủ</a></li>
+        <li><a href="#about">Giới thiệu</a></li>
+        <li><a href="#characters">Nhân vật</a></li>
+        <li><a href="#fight">Cuộc chiến</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">SIÊU NHÂN VIỆT</h1>
+      <p class="hero-subtitle">Nơi huyền thoại bắt đầu. Nơi định mệnh được định đoạt.</p>
+      <a href="#fight" class="btn">Xem trận chiến huyền thoại</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>KỶ NGUYÊN SIÊU NHÂN</h2>
+    <p style="font-size:1.3rem; max-width:900px; margin:0 auto; text-align:center;">
+      Trong một thế giới hỗn loạn, những chiến binh mang sức mạnh siêu nhiên đã xuất hiện để bảo vệ nhân loại. 
+      Họ đến từ những miền đất khác nhau, mang theo lý tưởng và cả những mâu thuẫn không thể hòa giải.<br><br>
+      Hôm nay, hai thế lực mạnh nhất sẽ đối đầu. Chỉ một người có thể đứng vững đến cuối cùng.
+    </p>
+  </section>
+
+  <section id="characters">
+    <h2>CÁC CHIẾN BINH HUYỀN THOẠI</h2>
+    <div class="characters">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Thunder Hero">
+        <div class="card-content">
+          <h3>THUNDERBOLT</h3>
+          <p>Sức mạnh sấm sét, tốc độ ánh sáng. Không ai có thể bắt kịp anh ta... trừ một người.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Shadow Hero">
+        <div class="card-content">
+          <h3>SHADOWFLAME</h3>
+          <p>Lửa đen hủy diệt, bóng tối nuốt chửng. Một khi đã giận dữ, không gì có thể ngăn cản.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nova Hero">
+        <div class="card-content">
+          <h3>NOVA STAR</h3>
+          <p>Năng lượng vũ trụ, khả năng tái tạo. Nhưng liệu sức mạnh có thể chiến thắng lòng kiêu hãnh?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fight">
+    <h2>TRANH CÃI → ĐÁNH NHAU</h2>
+
+    <div class="fight-container">
+      <div class="fighter left">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Thunderbolt" style="border-radius:50%; border:4px solid #7b5eff;">
+        <div class="speech left" id="speech1">Mày nghĩ mày mạnh hơn tao à? Đừng có mơ!</div>
+        <div class="speech left" id="speech2" style="display:none;">Tao sẽ cho mày thấy thế nào là sấm sét thật sự!</div>
+      </div>
+
+      <div class="vs">VS</div>
+
+      <div class="fighter right">
+        <img src="https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Shadowflame" style="border-radius:50%; border:4px solid #ff2a4a;">
+        <div class="speech right" id="speech3">Yếu đuối. Tao chỉ cần một đòn là xong mày.</div>
+        <div class="speech right" id="speech4" style="display:none;">Chuẩn bị đi... CUỘC CHIẾN BẮT ĐẦU!</div>
+      </div>
+    </div>
+
+    <div class="fight-btn">
+      <button class="btn" id="startFight" style="font-size:1.5rem; padding:1.3rem 4rem;">
+        BẮT ĐẦU CUỘC CHIẾN
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    <h2 style="font-size:3.5rem; margin-bottom:1rem;">SIÊU NHÂN VIỆT</h2>
+    <p style="margin-bottom:2rem; opacity:0.8;">© 2026 - Cuộc chiến chưa bao giờ kết thúc</p>
+    
+    <div class="social-links">
+      <a href="#">Facebook</a>
+      <a href="#">YouTube</a>
+      <a href="#">TikTok</a>
+      <a href="#">Discord</a>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 100);
+    });
+
+    // Fight animation sequence
+    const startBtn = document.getElementById('startFight');
+    const speeches = [
+      document.getElementById('speech1'),
+      document.getElementById('speech2'),
+      document.getElementById('speech3'),
+      document.getElementById('speech4')
+    ];
+
+    startBtn.addEventListener('click', () => {
+      startBtn.textContent = "ĐANG CHIẾN ĐẤU...";
+      startBtn.disabled = true;
+
+      let i = 0;
+      const interval = setInterval(() => {
+        if (i < speeches.length) {
+          speeches.forEach(s => s.style.display = 'none');
+          speeches[i].style.display = 'block';
+          i++;
+        } else {
+          clearInterval(interval);
+          startBtn.textContent = "KẾT THÚC (tạm thời)";
+        }
+      }, 2200);
+    });
+  </script>
+</body>
+</html>
